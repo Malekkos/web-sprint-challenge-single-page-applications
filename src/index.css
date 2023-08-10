@@ -15,6 +15,59 @@ code {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-around;
+  border-bottom: 2px green solid;
+  background-color: #FFFA8A;
+}
+.Elon-Musk {
+  width: 30%;
+  border: 2px burlywood solid;
+}
+.Bill-Gates {
+  width: 30%;
+  border: 2px burlywood solid
+}
+.The-Rock {
+  width: 30%;
+  border: 2px burlywood solid
+}
+.HomeWrapperTwo {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+.picWrapper {
+  width: 98%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+
+
+}
+.homeLink {
+  display: flex;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+  text-decoration: none;
+  color: darkgreen;
+  font-size: 1.4rem;
+  border: 1px dotted black;
+  border-radius: 50%;
+  height: 3rem;
+  width: 4rem
+}
+.pizzaLink {
+  display: flex;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+  text-decoration: none;
+  color: darkgreen;
+  font-size: 1.4rem;
+  border: 1px dotted black;
+  border-radius: 35%;
+  height: 3rem;
+  width: 10rem
 }
 .backgroundcolor-home {
   width:100%;
