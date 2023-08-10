@@ -45,11 +45,11 @@ const PizzaCreator = (props) => {
           </select>
         </label>
         <label>What Toppings?
-          <input name="pepperoni" onChange={change} checked={initialFormValues.pepperoni} type="checkbox" />
-          <input name="sausage" onChange={change} checked={initialFormValues.sausage} type="checkbox" />
-          <input name="bacon" onChange={change} checked={initialFormValues.bacon} type="checkbox" />
-          <input name="ham" onChange={change} checked={initialFormValues.ham} type="checkbox" />
-          <input name="pineapple" onChange={change} checked={initialFormValues.pineapple} type="checkbox" />
+          <input name="pepperoni" onChange={change} checked={madePizza.pepperoni} type="checkbox" />
+          <input name="sausage" onChange={change} checked={madePizza.sausage} type="checkbox" />
+          <input name="bacon" onChange={change} checked={madePizza.bacon} type="checkbox" />
+          <input name="ham" onChange={change} checked={madePizza.ham} type="checkbox" />
+          <input name="pineapple" onChange={change} checked={madePizza.pineapple} type="checkbox" />
         </label>
       </div>
       <input type="submit" value="Create your pizza" />
@@ -59,7 +59,7 @@ const PizzaCreator = (props) => {
         {madePizza.map((val, idx) => {
           return (
             <div key={idx}>
-              {val.name} ordered a {val.size} pizza, with the following toppings:{val.pepperoni} {val.sausage} {val.bacon} {val.ham} {val.pineapple}
+              {val.name} ordered a {val.size} pizza, with the following toppings: {val.pepperoni ? "pepperoni" : ""} {val.sausage ? "sausage" : ""} {val.bacon ? "bacon" : ""} {val.ham ? "ham" : ""} {val.pineapple ? "pineapple" : ""}
             </div>  
 
           )
