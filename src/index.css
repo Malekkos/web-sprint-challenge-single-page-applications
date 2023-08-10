@@ -11,3 +11,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.nav {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+}
+.backgroundcolor-home {
+  width:100%;
+  height:100%;
+  background-color: beige;
+}
+.HomeWrapper {
+  display: flex;
+  justify-content: center;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.home-picture {
+  max-width: 95%;
+  border: 2px solid burlywood;
+}
