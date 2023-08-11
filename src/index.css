@@ -111,3 +111,6 @@ code {
   align-items: flex-start;
 }
 
+.error {
+  color: red;
+}

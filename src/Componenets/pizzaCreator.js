@@ -1,6 +1,8 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import axios from "axios"
+import formSchema from "../validation/formSchema"
+import * as yup from "yup"
 const PizzaCreator = (props) => {
   const initialFormValues = {
     name: "",
@@ -13,10 +15,18 @@ const PizzaCreator = (props) => {
   }
   const [madePizza, setMadePizza] = useState([])
   const [formValues, setFormValues] = useState({ })
-  
+  const [disabled, setDisabled] = useState(true)
+  const [errors, setErrors] = useState({user: "", size: "", specialInstruction: ""});
+
+  const setFormErrors = (name, value) => {
+    yup.reach(formSchema, name).validate(value)
+    .then(() => setErrors({ ...errors, [name]: ""}))
+    .catch(err => setErrors({ ...errors, [name]: err.errors[0]}))
+  }
   const change = (event) => {
     const { name, value, checked, type } = event.target
     const valueToUse = type === "checkbox" ? checked : value
+    setFormErrors(name, valueToUse)
     setFormValues({ ...formValues, [name]: valueToUse})
   }
   const submit = (event) => {
@@ -39,6 +49,9 @@ const PizzaCreator = (props) => {
     //   })
     // }
   }
+  useEffect(() => {
+    formSchema.isValid(formValues).then(valid => setDisabled(!valid))
+  }, [formValues])
   // console.log(madePizza);
   return (
     <>
@@ -56,6 +69,9 @@ const PizzaCreator = (props) => {
       <div>
         <h2>Lets make your pizza!</h2>
       </div>
+      <p className="error">{errors.name}</p>
+      <p className="error">{errors.size}</p>
+      <p className="error">{errors.specialInstruction}</p>
       <form id="pizza-form" onSubmit={submit} className="pizzaDetails">
       <div className="pizzaDetails">
         <label>Your Name
@@ -83,7 +99,7 @@ const PizzaCreator = (props) => {
 
         </label>
       </div>
-      <input type="submit" value="Create your pizza" />
+      <input type="submit" value="Create your pizza" id="order-button"  disabled={disabled} />
       </form>
       <form onSubmit={checkout}>
       <div className="pizzaMadeWrapper">
@@ -102,7 +118,7 @@ const PizzaCreator = (props) => {
         })}
         </div>
       </div>
-        <input type="submit" value="checkout" />
+        <input type="submit" value="checkout" disabled={disabled} />
       </form>
       </div>
     </>
