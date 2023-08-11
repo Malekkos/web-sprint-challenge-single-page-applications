@@ -9,8 +9,8 @@ const Home = (props) => {
         <nav className="nav">
           <h1 id="Headermain" className="Headermain">Carpachos Carparchiest Pizza!</h1>
           <div className="linkWrapper">
-            <Link id="order-pizza" className="homeLink" to="/" >Home</Link>
-            <Link id="pizza-form" className="pizzaLink" to="pizza" >Make a Pizza!</Link>
+            <Link id="pizza-form" className="homeLink" to="/" >Home</Link>
+            <Link id="order-pizza" className="pizzaLink" to="pizza" >Make a Pizza!</Link>
           </div>
           {/* <Link to="pizzaCreator">Make a Pie!</Link> */}
         </nav>
