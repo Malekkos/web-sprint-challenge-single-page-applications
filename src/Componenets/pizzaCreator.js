@@ -20,7 +20,7 @@ const PizzaCreator = (props) => {
   }
   const submit = (event) => {
     event.preventDefault();
-    setMadePizza(madePizza.concat({name: formValues.name, size: formValues.size, pepperoni: formValues.pepperoni, sausage: formValues.sausage, bacon: formValues.bacon, ham: formValues.ham, pineapple: formValues.pineapple}));
+    setMadePizza(madePizza.concat({name: formValues.name, size: formValues.size, pepperoni: formValues.pepperoni, sausage: formValues.sausage, bacon: formValues.bacon, ham: formValues.ham, pineapple: formValues.pineapple, specialInstruction: formValues.specialInstruction}));
   } 
   const checkout = (event) => {
     event.preventDefault();
@@ -53,6 +53,12 @@ const PizzaCreator = (props) => {
           pineapple<input name="pineapple" onChange={change} checked={madePizza.pineapple} type="checkbox" />
         </label>
       </div>
+      <div>
+        <label>Any special requests?
+          <input onChange={change} name="specialInstruction" value={formValues.specialInstruction} type="text" id="special-text" />
+
+        </label>
+      </div>
       <input type="submit" value="Create your pizza" />
       </form>
       <div className="pizzaMadeWrapper">
@@ -61,7 +67,8 @@ const PizzaCreator = (props) => {
         {madePizza.map((val, idx) => {
           return (
             <div key={idx} >
-              {val.name} ordered a {val.size} pizza, with the following toppings: {val.pepperoni ? "pepperoni" : ""} {val.sausage ? "sausage" : ""} {val.bacon ? "bacon" : ""} {val.ham ? "ham" : ""} {val.pineapple ? "pineapple" : ""}
+              <p>{val.name} ordered a {val.size} pizza, with the following toppings: {val.pepperoni ? "pepperoni" : ""} {val.sausage ? "sausage" : ""} {val.bacon ? "bacon" : ""} {val.ham ? "ham" : ""} {val.pineapple ? "pineapple" : ""}</p>            
+              {val.specialInstruction ? `Special Request! ${val.specialInstruction}` : ""}
             </div>  
 
           )
