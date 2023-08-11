@@ -91,3 +91,23 @@ code {
   max-width: 95%;
   border: 2px solid burlywood;
 }
+
+.madePizza {
+  display: flex;
+  flex-flow: column wrap;
+  /* width: 50%; */
+}
+.makeAPizzaWrapper {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 8px
+}
+.pizzaDetails {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+

@@ -10,7 +10,7 @@ const PizzaCreator = (props) => {
     ham: false,
     pineapple: false
   }
-  const [madePizza, setMadePizza] = useState([initialFormValues])
+  const [madePizza, setMadePizza] = useState([])
   const [formValues, setFormValues] = useState({ })
   
   const change = (event) => {
@@ -25,14 +25,15 @@ const PizzaCreator = (props) => {
   const checkout = (event) => {
     event.preventDefault();
   }
-  console.log(madePizza);
+  // console.log(madePizza);
   return (
     <>
+      <div className="makeAPizzaWrapper">
       <div>
         <h2>Lets make your pizza!</h2>
       </div>
-      <form onSubmit={submit}>
-      <div>
+      <form id="pizza-form" onSubmit={submit} className="pizzaDetails">
+      <div className="pizzaDetails">
         <label>Your Name
           <input onChange={change} name="name" value={formValues.name} type="text" id="name-input" />
         </label>
@@ -44,30 +45,33 @@ const PizzaCreator = (props) => {
             <option value="large">Large</option>
           </select>
         </label>
-        <label>What Toppings?
-          <input name="pepperoni" onChange={change} checked={madePizza.pepperoni} type="checkbox" />
-          <input name="sausage" onChange={change} checked={madePizza.sausage} type="checkbox" />
-          <input name="bacon" onChange={change} checked={madePizza.bacon} type="checkbox" />
-          <input name="ham" onChange={change} checked={madePizza.ham} type="checkbox" />
-          <input name="pineapple" onChange={change} checked={madePizza.pineapple} type="checkbox" />
+        <label className="toppingLabel">What Toppings?
+          pepperoni<input name="pepperoni" onChange={change} checked={madePizza.pepperoni} type="checkbox" />
+          sausage<input name="sausage" onChange={change} checked={madePizza.sausage} type="checkbox" />
+          bacon<input name="bacon" onChange={change} checked={madePizza.bacon} type="checkbox" />
+          ham<input name="ham" onChange={change} checked={madePizza.ham} type="checkbox" />
+          pineapple<input name="pineapple" onChange={change} checked={madePizza.pineapple} type="checkbox" />
         </label>
       </div>
       <input type="submit" value="Create your pizza" />
       </form>
       <div className="pizzaMadeWrapper">
         <h2>Pizza's Made</h2>
+        <div className="madePizza">
         {madePizza.map((val, idx) => {
           return (
-            <div key={idx}>
+            <div key={idx} >
               {val.name} ordered a {val.size} pizza, with the following toppings: {val.pepperoni ? "pepperoni" : ""} {val.sausage ? "sausage" : ""} {val.bacon ? "bacon" : ""} {val.ham ? "ham" : ""} {val.pineapple ? "pineapple" : ""}
             </div>  
 
           )
         })}
+        </div>
       </div>
       <form onSubmit={checkout}>
         <input type="submit" value="checkout" />
       </form>
+      </div>
     </>
   )
 
