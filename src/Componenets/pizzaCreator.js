@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-
+import { Link } from "react-router-dom"
 const PizzaCreator = (props) => {
   const initialFormValues = {
     name: "",
@@ -28,6 +28,16 @@ const PizzaCreator = (props) => {
   // console.log(madePizza);
   return (
     <>
+      <div className="topWrapper">
+        <nav className="nav">
+          <h1 id="Headermain" className="Headermain">Carpachos Carparchiest Pizza!</h1>
+          <div className="linkWrapper">
+            <Link id="order-pizza" className="homeLink" to="/" >Home</Link>
+            <Link id="pizza-form" className="pizzaLink" to="pizza" >Make a Pizza!</Link>
+          </div>
+          {/* <Link to="pizzaCreator">Make a Pie!</Link> */}
+        </nav>
+      </div>
       <div className="makeAPizzaWrapper">
       <div>
         <h2>Lets make your pizza!</h2>
