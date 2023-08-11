@@ -4,15 +4,15 @@ import axios from "axios"
 import formSchema from "../validation/formSchema"
 import * as yup from "yup"
 const PizzaCreator = (props) => {
-  const initialFormValues = {
-    name: "",
-    size: "",
-    pepperoni: false,
-    sausage: false,
-    bacon: false,
-    ham: false,
-    pineapple: false
-  }
+  // const initialFormValues = {
+  //   name: "",
+  //   size: "",
+  //   pepperoni: false,
+  //   sausage: false,
+  //   bacon: false,
+  //   ham: false,
+  //   pineapple: false
+  // }
   const [madePizza, setMadePizza] = useState([])
   const [formValues, setFormValues] = useState({ })
   const [disabled, setDisabled] = useState(true)
