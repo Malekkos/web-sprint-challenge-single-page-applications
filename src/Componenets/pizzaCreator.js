@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
+import axios from "axios"
 const PizzaCreator = (props) => {
   const initialFormValues = {
     name: "",
@@ -21,9 +22,22 @@ const PizzaCreator = (props) => {
   const submit = (event) => {
     event.preventDefault();
     setMadePizza(madePizza.concat({name: formValues.name, size: formValues.size, pepperoni: formValues.pepperoni, sausage: formValues.sausage, bacon: formValues.bacon, ham: formValues.ham, pineapple: formValues.pineapple, specialInstruction: formValues.specialInstruction}));
+    console.log(event);
   } 
   const checkout = (event) => {
     event.preventDefault();
+    console.log(event.target)
+    axios.post("https://reqres.in/api/orders", madePizza)
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => console.error(err))
+    // const checkoutTime = checkout => {
+    //   axios.post("https://reqres.in/api/orders", checkout)
+    //   .then(res => {
+    //     console.log(res)
+    //   })
+    // }
   }
   // console.log(madePizza);
   return (
@@ -71,8 +85,11 @@ const PizzaCreator = (props) => {
       </div>
       <input type="submit" value="Create your pizza" />
       </form>
+      <form onSubmit={checkout}>
       <div className="pizzaMadeWrapper">
+      
         <h2>Pizza's Made</h2>
+        
         <div className="madePizza">
         {madePizza.map((val, idx) => {
           return (
@@ -85,7 +102,6 @@ const PizzaCreator = (props) => {
         })}
         </div>
       </div>
-      <form onSubmit={checkout}>
         <input type="submit" value="checkout" />
       </form>
       </div>
